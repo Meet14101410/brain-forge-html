@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Synapse Spark</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Synapse Spark</h1>
+    <p>Test your reflex and memory. Click the right shape when it appears!</p>
+
+    <div id="game-area">
+      <button id="start-btn">Start Game</button>
+      <div id="shape" class="hidden"></div>
+      <p id="status"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
