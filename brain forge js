@@ -1,0 +1,58 @@
+const colors = ['R', 'G', 'B', 'Y']; // Red, Green, Blue, Yellow
+let code = [];
+
+function generateCode() {
+  code = [];
+  for (let i = 0; i < 4; i++) {
+    code.push(colors[Math.floor(Math.random() * colors.length)]);
+  }
+  console.log("Secret Code:", code.join('')); // for testing
+}
+
+function checkGuess() {
+  const input = document.getElementById('guess').value.toUpperCase();
+  const resultDiv = document.getElementById('result');
+  const historyDiv = document.getElementById('history');
+
+  if (input.length !== 4 || !/^[RGBY]{4}$/.test(input)) {
+    resultDiv.textContent = 'Enter a 4-letter code using R, G, B, Y.';
+    return;
+  }
+
+  const guess = input.split('');
+  let correctPosition = 0;
+  let correctColor = 0;
+
+  const codeCopy = [...code];
+  const guessCopy = [...guess];
+
+  // Check correct positions
+  for (let i = 0; i < 4; i++) {
+    if (guess[i] === code[i]) {
+      correctPosition++;
+      codeCopy[i] = guessCopy[i] = null;
+    }
+  }
+
+  // Check correct colors
+  for (let i = 0; i < 4; i++) {
+    if (guessCopy[i]) {
+      const index = codeCopy.indexOf(guessCopy[i]);
+      if (index !== -1) {
+        correctColor++;
+        codeCopy[index] = null;
+      }
+    }
+  }
+
+  if (correctPosition === 4) {
+    resultDiv.textContent = `🎉 You cracked the code: ${code.join('')}!`;
+  } else {
+    resultDiv.textContent = `${correctPosition} correct place(s), ${correctColor} correct color(s).`;
+    historyDiv.innerHTML += `<div>Guess: ${input} — ${correctPosition} right place, ${correctColor} right color</div>`;
+  }
+
+  document.getElementById('guess').value = '';
+}
+
+generateCode();
