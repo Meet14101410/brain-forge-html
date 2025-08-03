@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brain Forge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-container">
+    <h1>🧠 Brain Forge</h1>
+    <p>Guess the 4-color code (Red, Green, Blue, Yellow)</p>
+    
+    <div class="input-section">
+      <input type="text" id="guess" maxlength="4" placeholder="e.g., RGBY" />
+      <button onclick="checkGuess()">Submit</button>
+    </div>
+
+    <div id="result"></div>
+    <div id="history"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
